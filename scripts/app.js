@@ -35,6 +35,7 @@ var app = {
       // data: {order: '-createdAt'},
       contentType: 'application/json',
       success: function (data) {
+        console.log('data:', data);
         for(var i = data.results.length - 1; i >= 0; i--) {
           if (_.contains(roomList, data.results[i].roomname && data.results[i].roomname === currentRoom)) {
             app.addMessage(data.results[i], false);
@@ -79,7 +80,7 @@ var app = {
     var message = {
       username: _.escape(name),
       text: _.escape($(".message").val()),
-      room: value
+      roomname: value
     };
     app.send(message);
   }
